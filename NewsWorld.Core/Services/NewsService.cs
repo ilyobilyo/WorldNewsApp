@@ -12,17 +12,38 @@ namespace NewsWorld.Core.Services
 
         public async Task<IEnumerable<NewsServiceModel>> GetRecentNews()
         {
+            var recentNews = await GetNewsFromApi();
+
+            return recentNews;
+        }
+
+        public async Task<IEnumerable<NewsServiceModel>> GetSearchedNews(string searchedMessage)
+        {
+            var recentNews = await GetNewsFromApi(searchedMessage);
+
+            return recentNews;
+        }
+
+
+
+        private async Task<IEnumerable<NewsServiceModel>> GetNewsFromApi(string searchedMessage = null)
+        {
             var recentNews = new List<NewsServiceModel>();
 
             using (var client = new HttpClient())
             {
                 HttpRequestMessage request = new HttpRequestMessage();
 
-                request.RequestUri = new Uri(baseUrl);
+                if (searchedMessage == null)
+                {
+                    request.RequestUri = new Uri(baseUrl);
+                }
+                else
+                {
+                    request.RequestUri = new Uri(baseUrl + "q=" + searchedMessage);
+                }
 
                 request.Method = HttpMethod.Get;
-
-                //request.Headers.Add("X-Api-Key", "cd515c0e53784fffadc76102908a4eb8");
 
                 HttpResponseMessage response = await client.SendAsync(request);
 
