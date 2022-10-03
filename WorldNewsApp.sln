@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldNewsApp", "WorldNewsApp\WorldNewsApp.csproj", "{4A5AE5A9-6A5B-4F1C-B6B3-D6F98D0C68C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsWorld.Core", "NewsWorld.Core\NewsWorld.Core.csproj", "{6CF21A89-380A-4554-A28D-E9A94A737DCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A5AE5A9-6A5B-4F1C-B6B3-D6F98D0C68C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A5AE5A9-6A5B-4F1C-B6B3-D6F98D0C68C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A5AE5A9-6A5B-4F1C-B6B3-D6F98D0C68C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A5AE5A9-6A5B-4F1C-B6B3-D6F98D0C68C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CF21A89-380A-4554-A28D-E9A94A737DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CF21A89-380A-4554-A28D-E9A94A737DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CF21A89-380A-4554-A28D-E9A94A737DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CF21A89-380A-4554-A28D-E9A94A737DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {949384EC-15F9-472B-AD75-7B52085993E2}
+	EndGlobalSection
+EndGlobal
