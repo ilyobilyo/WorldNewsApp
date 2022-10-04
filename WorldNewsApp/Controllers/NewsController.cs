@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NewsWorld.Core.Contracts;
 using NewsWorld.Core.ServiceModels.News;
+using WorldNewsApp.Models.News;
 
 namespace WorldNewsApp.Controllers
 {
@@ -13,21 +14,26 @@ namespace WorldNewsApp.Controllers
             this.newsService = newsService;
         }
 
-        public async Task<IActionResult> Index(IEnumerable<NewsServiceModel> news = null)
+        public async Task<IActionResult> Index(NewsIndexViewModel model = null)
         {
-            if (news.Count() == 0)
+            IEnumerable<NewsServiceModel> news;
+
+            if (model.SearchedMessage == null)
             {
                 news = await newsService.GetRecentNews();
             }
+            else
+            {
+                news = await newsService.GetSearchedNews(model.SearchedMessage);
+            }
 
-            return View(news);
+            var viewModel = new NewsIndexViewModel()
+            {
+                News = news.ToList()
+            };
+
+            return View(viewModel);
         }
 
-        public async Task<IActionResult> SearchNews(string searchedMessage)
-        {
-            var serachedNews = await newsService.GetSearchedNews(searchedMessage);
-            
-            return RedirectToAction(nameof(Index), serachedNews);
-        }
     }
 }
