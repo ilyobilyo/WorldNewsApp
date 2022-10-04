@@ -8,7 +8,7 @@ namespace NewsWorld.Core.Services
 {
     public class NewsService : INewsService
     {
-        private readonly string baseUrl = " https://newsdata.io/api/1/news?apikey=pub_11834ce7a3751feb98d43c623fadbdb23e75b&language=en";
+        private readonly string baseUrl = "https://newsdata.io/api/1/news?apikey=pub_11834ce7a3751feb98d43c623fadbdb23e75b&language=en";
 
         public async Task<IEnumerable<NewsServiceModel>> GetRecentNews()
         {
@@ -40,7 +40,7 @@ namespace NewsWorld.Core.Services
                 }
                 else
                 {
-                    request.RequestUri = new Uri(baseUrl + "q=" + searchedMessage);
+                    request.RequestUri = new Uri(baseUrl + "&q=" + searchedMessage);
                 }
 
                 request.Method = HttpMethod.Get;
