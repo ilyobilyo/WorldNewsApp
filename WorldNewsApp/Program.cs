@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using NewsWorld.Core;
 using NewsWorld.Core.Contracts;
 using NewsWorld.Core.Services;
-using WorldNewsApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +17,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services
-    .AddScoped<INewsService, NewsService>();
+    .AddScoped<INewsService, NewsService>()
+    .AddScoped<IUniversityService, UniversityService>();
 
 var app = builder.Build();
 
