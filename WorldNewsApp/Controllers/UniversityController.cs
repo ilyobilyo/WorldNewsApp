@@ -1,22 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NewsWorld.Core.Contracts;
+using WorldNewsApp.Models.Pageing;
 
 namespace WorldNewsApp.Controllers
 {
     public class UniversityController : Controller
     {
-        private readonly IUniversityService universityService;
+        private readonly IPageingService pageingService;
 
-        public UniversityController(IUniversityService universityService)
+        public UniversityController(IPageingService pageingService)
         {
-            this.universityService = universityService;
+            this.pageingService = pageingService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber, PageingViewModel model = null)
         {
-            //var universities = universityService.GetUniversitiesSeed();
+            PageingViewModel universities;
 
-            return View();
+            if (model.SearchedMessage != null)
+            {
+                universities = await pageingService.GetUniversitiesPerPage(pageNumber, model.SearchedMessage);
+            }
+            else
+            {
+                universities = await pageingService.GetUniversitiesPerPage(pageNumber);
+            }
+
+
+            return View(universities);
         }
     }
 }
