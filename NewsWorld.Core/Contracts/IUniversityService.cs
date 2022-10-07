@@ -5,6 +5,7 @@ namespace NewsWorld.Core.Contracts
 {
     public interface IUniversityService
     {
-        Task<IEnumerable<UniversityServiceModel>> GetUniversities();
+        Task<List<UniversityServiceModel>> GetUniversities(int pageNumber, int pageSize, string country = null);
+        Task<int> GetTotalCountOfUniversities(string country = null);
     }
 }
