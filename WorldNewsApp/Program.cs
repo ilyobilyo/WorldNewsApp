@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NewsWorld.Core;
 using NewsWorld.Core.Contracts;
+using NewsWorld.Core.Data.AppRepository;
+using NewsWorld.Core.MapProfiles;
 using NewsWorld.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,8 +19,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services
+    .AddScoped<IApplicationRepository, ApplicationRepository>()
     .AddScoped<INewsService, NewsService>()
-    .AddScoped<IUniversityService, UniversityService>();
+    .AddScoped<IUniversityService, UniversityService>()
+    .AddScoped<IPageingService, PageingService>();
+
+builder.Services.AddAutoMapper(typeof(UniversityMapping));
 
 var app = builder.Build();
 
