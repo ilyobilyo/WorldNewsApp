@@ -1,14 +1,37 @@
-﻿
+﻿@using WorldNewsApp.Models.Pageing
+@model PageingViewModel
 
+
+<div class="right_coloum floatright">
+     <form asp-action="Index" id="searchUniversity" method="get">
+         <div class="input-group">
+           <div class="form-outline">
+             <input type="search" id="form1" class="form-control" asp-for="SearchedMessage" placeholder="Search Universities by Country"/>
+           </div>
+           <button type="submit" class="btn btn-primary" href="/News/Index" style="width: 90px; height: 30px; margin-top: 3px">
+               SEARCH
+           </button>
+         </div>
+     </form>
+</div>
 
 <div class="content_area">
 	<div class="single_right_coloum">
-        @for (var i = 0; i <= 30; i++)
+        @foreach(var uni in Model.Universities)
         {
-          <h2 class="title">editorial</h2>
+          <h1 class="title">@uni.Name</h1>
           <div class="single_cat_right_content editorial"> <img src="~/img/uni.jpg">
-            <h3>Lorem ipsum dolor sit amet con se cte tur adipiscing elit</h3>
+            <h2>@uni.Country</h2>
+            <h3>@uni.AlphaTwoCode</h3>
+            <h3>@uni.Domain</h3>
+            <a href="@uni.WebPage">@uni.WebPage</a>
           </div>
         }
-      </div>
+    </div>
+    @{
+        var prevDisabled = !Model.Universities.HasPreviousPage ? "disabled" : "";
+	    var nextDisabled = !Model.Universities.HasNextPage ? "disabled" : "";
+    }
+    <a asp-action="Index" asp-route-pageNumber="@(Model.Universities.PageIndex - 1)" class="btn btn-warning  @prevDisabled">Previous</a>
+	<a asp-action="Index" asp-route-pageNumber="@(Model.Universities.PageIndex + 1)" class="btn btn-warning @nextDisabled">Next</a>
 </div>
