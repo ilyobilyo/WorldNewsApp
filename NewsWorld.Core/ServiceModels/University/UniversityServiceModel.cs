@@ -10,5 +10,8 @@
 
         public string StateProvince { get; set; }
 
+        public string Domain { get; set; }
+
+        public string WebPage { get; set; }
     }
 }
