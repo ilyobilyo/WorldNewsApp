@@ -12,7 +12,7 @@ namespace NewsWorld.Core.Data.Configure
 
         public void Configure(EntityTypeBuilder<University> builder)
         {
-            List<University> universities =  GetUniversities();
+            List<University> universities = GetUniversities();
 
             builder.HasData(universities);
         }
@@ -29,11 +29,11 @@ namespace NewsWorld.Core.Data.Configure
 
                 request.Method = HttpMethod.Get;
 
-                HttpResponseMessage response =  client.Send(request);
+                HttpResponseMessage response = client.Send(request);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    var responseString =  response.Content.ReadAsStringAsync();
+                    var responseString = response.Content.ReadAsStringAsync();
 
                     var jsonObj = JsonConvert.DeserializeObject<List<UniversityJsonObject>>(responseString.Result);
 
