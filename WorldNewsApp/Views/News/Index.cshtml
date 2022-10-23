@@ -8,36 +8,48 @@
         <div class="left_coloum floatleft">
           <div class="single_left_coloum_wrapper">
             <h2 class="title">Latest News</h2>
+                @if(Model.News.Count > 3)
+                {
                 @for (var i = 0; i < 3; i++)
                 {
                   <div class="single_left_coloum floatleft">
-                    <img src="@Model.News[i].Image_Url" alt="Picture is missing"/>
+                    <img src="@Model?.News[i]?.Image_Url" alt="Picture is missing"/>
                     <h3>@Model.News[i].Title</h3>
                         <p>@Model.News[i].Description</p>
                   <a class="readmore" href="@Model.News[i].Link">Read More</a> 
                  </div>
                 }
+                }
+                
           </div>
           <div class="single_left_coloum_wrapper">
             <h2 class="title">Leading News</h2>
-            @for (var i = 3; i < 6; i++)
-            {
-              <div class="single_left_coloum floatleft">
-                  <img src="@Model.News[i].Image_Url" alt="Picture is missing" />
-                <h3>@Model.News[i].Title</h3>
-                    <p>@Model.News[i].Description</p>
-              <a class="readmore" href="@Model.News[i].Link">Read More</a> </div>
-            }
+                @if(Model.News.Count - 3 > 3)
+                {
+                @for (var i = 3; i < 6; i++)
+                    {
+                        <div class="single_left_coloum floatleft">
+                            <img src="@Model.News[i].Image_Url" alt="Picture is missing" />
+                            <h3>@Model.News[i].Title</h3>
+                                <p>@Model.News[i].Description</p>
+                        <a class="readmore" href="@Model.News[i].Link">Read More</a> </div>
+                    }
+                }
+               
             </div>
           <div class="single_left_coloum_wrapper single_cat_left">
             <h2 class="title">Daily News</h2>
-            @for (var i = 6; i < 10; i++)
-            {
-              <div class="single_cat_left_content floatleft">
-                <h3>@Model.News[i].Title</h3>
-                <p>@Model.News[i].Description</p>
-                    </div>
-            }
+                @if(Model.News.Count - 6 > 3)
+                {
+                    @for (var i = 6; i < 10; i++)
+                    {
+                     <div class="single_cat_left_content floatleft">
+                        <h3>@Model.News[i].Title</h3>
+                        <p>@Model.News[i].Description</p>
+                     </div>
+                    }
+                }
+            
           </div>
         </div>
         <div class="right_coloum floatright">
